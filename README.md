@@ -1,7 +1,8 @@
 # Cifrado_Cesar
 TP grupal para la materia organización del computador (UNGS)
 
-![image](https://github.com/D4m0lc3s/Cifrado_Cesar/assets/55171195/9faf9088-927c-4ba3-b047-bfae97b7d15c)
+![image](https://github.com/D4m0lc3s/Cifrado_Cesar/assets/55171195/fb46a3b6-3150-4f0b-afe1-78d5ffadb0d1)
+
 
 Integrantes:
 -Fabricio Damian Dominguez
