@@ -1,7 +1,8 @@
 # Cifrado_Cesar
 TP grupal para la materia organización del computador (UNGS)
 
-![image](https://github.com/D4m0lc3s/Cifrado_Cesar/assets/55171195/fb46a3b6-3150-4f0b-afe1-78d5ffadb0d1)
+![image](https://github.com/D4m0lc3s/Cifrado_Cesar/assets/55171195/3f6dfac8-d57b-4c6c-a610-9f73a252bb29)
+
 
 
 Integrantes:
