@@ -1,6 +1,6 @@
 #Asignacion de datos
 
-ABCD = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+ABC = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 MensajeCodificado = ""
 
@@ -12,6 +12,7 @@ Corrimiento = inputUsuario_Lista[0]
 Mensaje_a_decodificar = inputUsuario_Lista[1:]
 
 #Funciones
+#Recorro el input del usuario en forma de lista y el ABC, busco en indice de las letras que coinciden. creo una cadena con el corrimiento elegido
 for Letra_ABC in ABCD:
   for Letra_Mensaje in Mensaje_a_decodificar:
     if Letra_ABC  == Letra_Mensaje:
