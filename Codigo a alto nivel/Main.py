@@ -5,11 +5,12 @@ MensajeDecodificado = ""
 
 #Input
 
-inputUsuario = input ("Ingrese el mensaje que desea codificar, luego ingrese el corrimiento del mensaje y por ultimo si desea codificar o decodificar ")
+inputUsuario = input ("Ingrese el mensaje que desea codificar, luego ingrese el corrimiento del mensaje y por ultimo si desea codificar o decodificar, todo separado por punto y coma: ")
 
+inputUsuario = inputUsuario.split(";")
 inputUsuarioOpc = inputUsuario[-1]
 inputUsuarioCor = int(inputUsuario[-2])
-inputUsuarioMen = inputUsuario[:-2]
+inputUsuarioMen = inputUsuario[-3]
 
 #Funcion Codificar
 if inputUsuarioOpc == "c":
