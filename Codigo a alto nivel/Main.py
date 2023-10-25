@@ -1,21 +1,37 @@
 #Asignacion de datos
 
-ABC = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-
 MensajeCodificado = ""
+MensajeDecodificado = ""
 
 #Input
-inputUsuario = input ("ingrese el corrimiento del mensaje y luego Ingrese el mensaje que desea codificar")
 
-inputUsuario_Lista = list(inputUsuario)
-Corrimiento = inputUsuario_Lista[0]
-Mensaje_a_decodificar = inputUsuario_Lista[1:]
+inputUsuario = input ("Ingrese el mensaje que desea codificar, luego ingrese el corrimiento del mensaje y por ultimo si desea codificar o decodificar ")
 
-#Funciones
-#Recorro el input del usuario en forma de lista y el ABC, busco en indice de las letras que coinciden. creo una cadena con el corrimiento elegido
-for Letra_ABC in ABCD:
-  for Letra_Mensaje in Mensaje_a_decodificar:
-    if Letra_ABC  == Letra_Mensaje:
-      MensajeCodificado += ABCD[ABCD.index(Letra_ABC) + int(Corrimiento)]
+inputUsuarioOpc = inputUsuario[-1]
+inputUsuarioCor = int(inputUsuario[-2])
+inputUsuarioMen = inputUsuario[:-2]
 
-print ("mensaje secreto =" + MensajeCodificado)
+#Funcion Codificar
+if inputUsuarioOpc == "c":
+  for letra_Mensaje in inputUsuarioMen:
+    numAscii = ord(letra_Mensaje)
+    nuevoNumAscii = numAscii + inputUsuarioCor
+    if nuevoNumAscii > 122:
+        nuevoNumAscii = nuevoNumAscii - 122 + 96
+
+    MensajeCodificado += chr(nuevoNumAscii)
+  print ("mensaje secreto = " + MensajeCodificado)
+  
+#Funcion decodificar
+elif inputUsuarioOpc == "d" :
+
+  for letra_Mensaje in inputUsuarioMen:
+    numAscii = ord(letra_Mensaje) 
+    nuevoNumAscii = numAscii + (inputUsuarioCor * -1)
+    if nuevoNumAscii < 97:
+       nuevoNumAscii = nuevoNumAscii - 96 + 122
+    MensajeDecodificado += chr(nuevoNumAscii)
+  print ("mensaje decodificado = " + MensajeDecodificado)
+#Input incorrecto
+else:
+  print ("Ingrese una opcion valida")
