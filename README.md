@@ -6,9 +6,9 @@ Integrantes:
 
 -Fabricio Damian Dominguez
 
--Walter ****
+-Walter Gabriel Romero
 
--******
+-Giovanni Ezequiel Coca
 
 Descripción:
 El programa busca crear cifrados con el "Codigo sesar" en cual permite resguardar mensajes para volverlos mas seguros.
