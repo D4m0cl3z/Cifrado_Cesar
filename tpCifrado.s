@@ -1,6 +1,7 @@
+
 .data
 
-pedidoDeMensaje: .asciz "Ingrese mensaje, valores de las claves y acción: "
+pedidoDeMensaje: .asciz "Ingrese mensaje, valores de las claves y acciÃ³n: "
 inputUsuario: .space 128
 mensajeExtraido: .space 128
 claveExtraida: .word 0
@@ -19,11 +20,12 @@ calcular_longitud:
 ciclo:
     ldrb r2, [r1]
     add r1, #1
-    add r0, #1
-    cmp r2, #0
-    bne ciclo
+    cmp r2, #10
+    beq finCiclo
 
-    sub r0, #2
+    add r0, #1
+    bal ciclo
+finCiclo:
     pop { lr }
     bx lr
     .fnend
@@ -113,9 +115,9 @@ Corrimiento_singiro_codificador:
     bal recorrer_codificador
 
 salir_codificar:
-    mov r8, #0X0A
-    strb r8, [r4]
-    add r9, #1
+   @ mov r8, #0X0A
+   @ strb r8, [r4]
+    @add r9, #1
     pop { r6, lr }
     bx lr
     .fnend
@@ -158,6 +160,27 @@ salir_decodificar:
     .fnend
 
 
+esPar:
+    .fnstart
+    push { lr }
+    mov r10, r9
+cicloEsPar:
+    sub r10, #2
+    cmp r10, #1
+    bgt cicloEsPar
+    beq impar
+par:
+    mov r3, #0x30
+    bal salirEsPar
+impar:
+    mov r3, #0x31
+salirEsPar:
+    strb r3, [r4]
+    add r9, #1
+    pop { lr }
+    bx lr
+    .fnend
+
 Convertir_ascci_a_entero:
 
 
@@ -170,13 +193,13 @@ main:
    mov r0, #1  @ Descriptor de archivo (1 para stdout)
    ldr r1, =pedidoDeMensaje
    mov r2, #49
-   mov r7, #4  @ Código de llamada al sistema para write (4)
+   mov r7, #4  @ CÃ³digo de llamada al sistema para write (4)
    swi 0       @ Llama al sistema para escribir la cadena
 
    mov r0, #0            @ Descriptor de archivo (0 para stdin)
    ldr r1, =inputUsuario
-   mov r2, #128           @ Tamaño del búfer
-   mov r7, #3            @ Código de llamada al sistema para read (3)
+   mov r2, #128           @ TamaÃ±o del bÃºfer
+   mov r7, #3            @ CÃ³digo de llamada al sistema para read (3)
    swi 0                @ Llama al sistema para leer la entrada del usuario
 
 
@@ -213,22 +236,25 @@ main:
 //    mov r0, #1  @ Descriptor de archivo (1 para stdout)
 //    ldr r1, =mensajeExtraido
 //    mov r2, #4
-//    mov r7, #4  @ Código de llamada al sistema para write (4)
+//    mov r7, #4  @ CÃ³digo de llamada al sistema para write (4)
 //    swi 0       @ Llama al sistema para escribir la cadena
 
 //    mov r0, #1  @ Descriptor de archivo (1 para stdout)
 //    ldr r1, =claveExtraida
 //    mov r2, #4
-//    mov r7, #4  @ Código de llamada al sistema para write (4)
+//    mov r7, #4  @ CÃ³digo de llamada al sistema para write (4)
 //    swi 0       @ Llama al sistema para escribir la cadena
 
 //    mov r0, #1  @ Descriptor de archivo (1 para stdout)
 //    ldr r1, =opcionExtraida
 //    mov r2, #1
-//    mov r7, #4  @ Código de llamada al sistema para write (4)
+//    mov r7, #4  @ CÃ³digo de llamada al sistema para write (4)
 //    swi 0       @ Llama al sistema para escribir la cadena
+    
+    bl esPar
+    strb r3, [r4]
 
-    mov r7, #4  @ Código de llamada al sistema para write (4)
+    mov r7, #4  @ CÃ³digo de llamada al sistema para write (4)
     mov r0, #1  @ Descriptor de archivo (1 para stdout)
     mov r2, r9
     ldr r1, =mensajeCodificado
@@ -236,4 +262,4 @@ main:
 
     @ Salir del programa usando la llamada al sistema de salida
     mov r7, #1            @ Codigo de llamada al sistema para exit (1)
-    swi 0                @ Llama al sistema
+    swi 0  
